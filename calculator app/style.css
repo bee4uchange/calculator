@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+
+html[data-theme='1'] {
+    --text-color: #fff;
+    --btn-color: hsl(221, 14%, 31%);
+
+    --main-bg: hsl(222, 26%, 31%);
+    --toggle-bg: hsl(223, 31%, 20%);
+    --display-bg: hsl(224, 36%, 15%);
+
+    --key-bg:hsl(30, 25%, 89%);
+    --key-shadow: hsl(28, 16%, 65%);
+
+    --equal-btn:hsl(6, 63%, 50%);
+    --equal-shadow: hsl(6, 70%, 34%);
+
+    --option-btn: hsl(225, 21%, 49%);
+    --option-shadow: hsl(224, 28%, 35%);
+}
+
+html[data-theme='2'] {
+    --text-color: #000;
+    --btn-color: hsl(60, 10%, 19%);
+
+    --main-bg: hsl(0, 0%, 90%);
+    --toggle-bg: hsl(0, 5%, 81%);
+    --display-bg:  hsl(0, 0%, 93%);
+
+    --key-bg:hsl(45, 7%, 89%);
+    --key-shadow: hsl(35, 11%, 61%);
+
+    --equal-btn: hsl(25, 98%, 40%);
+    --equal-shadow: hsl(25, 99%, 27%);
+
+    --option-btn: hsl(185, 42%, 37%);
+    --option-shadow: hsl(185, 58%, 25%);
+}
+
+html[data-theme='3'] {
+    --text-color: hsl(52, 100%, 62%);
+    --btn-color: hsl(52, 100%, 62%);
+
+    --main-bg: hsl(268, 75%, 9%);
+    --toggle-bg: hsl(268, 71%, 12%);
+    --screen-bg:  hsl(268, 71%, 12%);
+
+    --key-bg:hsl(268, 47%, 21%);
+    --key-shadow: hsl(290, 70%, 36%);
+
+    --equal-btn: hsl(176, 100%, 44%);
+    --equal-shadow: hsl(177, 92%, 70%);
+
+    --option-btn: hsl(281, 89%, 26%);
+    --option-shadow: hsl(285, 91%, 52%);
+}
+
+body {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: var(--main-bg);
+    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: 0.3s ease;
+}
+
+.calc {
+    max-width: 375px;
+    width: 100%;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 15px;
+}
+
+.title {
+    color: var(--text-color);
+    font-size: 30px;
+}
+
+.theme {
+    color: var(--text-color);
+    font-size: small;
+    display: flex;
+    align-items: flex-end;
+}
+
+.theme p {
+    font-size: 10px;
+    font-weight: 300;
+}
+
+.theme-number {
+    display: flex;
+    justify-content: space-around;
+    font-size: 10px;
+    margin-left: 3px;
+}
+
+.theme-toggle {
+    margin-left: 10px;
+}
+
+.tgl-button {
+    background-color: var(--toggle-bg);
+    height: 20px;
+    width: 66px;
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    padding: 3px;
+    padding-left: 3px;
+}
+
+.tgl-button div {
+    width: 33.33%;
+    height: 100%;
+}
+
+.btn-round {
+    border-radius: 50px;
+    width: 14px;
+    height: 14px;
+    background-color: hsl(6, 63%, 50%);
+    transition: 0.3 ease-in-out;
+    position: absolute;
+}
+
+.display {
+    margin-bottom: 15px;
+}
+
+.display {
+    background-color: var(--display-bg);
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    user-select: none;
+    font-size: 40px;
+    border-radius: 8px;
+    color: var(--text-color);
+    text-align: right;
+    padding: 30px 20px;
+    overflow: hidden;
+}
+
+.main {
+    padding: 20px;
+    display: grid;
+    background-color: var(--toggle-bg);
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    border-radius: 8px;
+    grid-row-gap: 15px;
+}
+
+.btn {
+    background-color: var(--key-shadow);
+    border: none;
+    color: var(--btn-color);
+    height: 65px;
+    border-radius: 8px;
+    font-size: large;
+}
+
+.btn-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--key-bg);
+    height: 100%;
+    border-radius: 8px;
+    transform: translateY(-5px);
+    transition: 0.3s ease-in-out;
+    font-size: 25px;
+}
+
+.btn-text:hover {
+    background-color: #ffffff;
+    color: #2d67e6;
+}
+
+.btn-text:active {
+    transform: translateY(0px);
+}
+
+.btn.blue {
+    background-color: var(--option-shadow);
+    color: white;
+}
+
+.btn.blue .btn-text {
+    background-color: var(--option-btn);
+    font-size: 20px;
+}
+
+.btn.blue .btn-text:hover {
+    background-color: #ffffff;
+    color: #2d67e6;
+}
+
+.btn.blue.reset {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.btn.orange.equal {
+    background-color: var(--equal-shadow);
+    grid-column-start: 3;
+    grid-column-end: 5;
+    color: white;
+}
+
+.btn.orange.equal .btn-text {
+    background-color: var(--equal-btn);
+}
+
+
+
+
+
+
+
