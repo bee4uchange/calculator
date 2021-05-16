@@ -191,11 +191,6 @@ body {
     font-size: 25px;
 }
 
-.btn-text:hover {
-    background-color: #ffffff;
-    color: #2d67e6;
-}
-
 .btn-text:active {
     transform: translateY(0px);
 }
@@ -208,11 +203,6 @@ body {
 .btn.blue .btn-text {
     background-color: var(--option-btn);
     font-size: 20px;
-}
-
-.btn.blue .btn-text:hover {
-    background-color: #ffffff;
-    color: #2d67e6;
 }
 
 .btn.blue.reset {
