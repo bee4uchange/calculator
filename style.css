@@ -17,12 +17,15 @@ html[data-theme='1'] {
 
     --key-bg:hsl(30, 25%, 89%);
     --key-shadow: hsl(28, 16%, 65%);
+    --key-hover: hsl(28, 16%, 65%);
 
     --equal-btn:hsl(6, 63%, 50%);
     --equal-shadow: hsl(6, 70%, 34%);
+    --equal-hover: hsl(6, 70%, 34%);
 
     --option-btn: hsl(225, 21%, 49%);
     --option-shadow: hsl(224, 28%, 35%);
+    --option-hover: hsl(224, 28%, 35%);
 }
 
 html[data-theme='2'] {
@@ -49,7 +52,7 @@ html[data-theme='3'] {
 
     --main-bg: hsl(268, 75%, 9%);
     --toggle-bg: hsl(268, 71%, 12%);
-    --screen-bg:  hsl(268, 71%, 12%);
+    --display-bg:  hsl(268, 71%, 12%);
 
     --key-bg:hsl(268, 47%, 21%);
     --key-shadow: hsl(290, 70%, 36%);
@@ -137,7 +140,6 @@ body {
     width: 14px;
     height: 14px;
     background-color: hsl(6, 63%, 50%);
-    transition: 0.3 ease-in-out;
     position: absolute;
 }
 
@@ -187,13 +189,15 @@ body {
     background-color: var(--key-bg);
     height: 100%;
     border-radius: 8px;
-    transform: translateY(-5px);
-    transition: 0.3s ease-in-out;
+    transform: translateY(-6px);
+    transition: 0.1s ease-in-out;
     font-size: 25px;
+    outline: none;
 }
 
 .btn-text:active {
     transform: translateY(0px);
+    background-color: var(--key-shadow);
 }
 
 .btn.blue {
@@ -204,6 +208,10 @@ body {
 .btn.blue .btn-text {
     background-color: var(--option-btn);
     font-size: 20px;
+}
+
+.btn.blue .btn-text:active {
+    background-color: var(--option-shadow);
 }
 
 .btn.blue.reset {
@@ -220,6 +228,10 @@ body {
 
 .btn.orange.equal .btn-text {
     background-color: var(--equal-btn);
+}
+
+.btn.orange.equal .btn-text:active {
+    background-color: var(--equal-shadow);
 }
 
 

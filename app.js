@@ -1,10 +1,9 @@
 const display = document.getElementsByClassName('display')
 const numbers = document.getElementsByClassName('btn')
 const theme = document.getElementsByClassName('btn-round')[0]
-const theme_change = document.querySelector('btn-round')
+const page = document.getElementsByTagName('html')
 
-let number = ['1', '2', '3', '4', '5', '6', '7' , '8', '9', '']
-let operator = ['+', '-', '*', '/', '']
+let number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '']
 
 /* for (let number of numbers) {
     number.addEventListener('click', function() {
@@ -14,15 +13,26 @@ let operator = ['+', '-', '*', '/', '']
 } */
 let dot = 0
 let click = false
+let op = 0
+let tmp = '+'
+
+document.addEventListener("DOMContentLoaded", function () {
+
+});
 
 function clicked(val) {
-    if (display[0].innerHTML == 0 && (val in number || val == '+' || val == '-')) {
+    let len = display[0].innerHTML.toString()
+    console.log(len)
+    if (len == '0' && (val in number)) {
         display[0].innerHTML = ''
         display[0].innerHTML += val
+        console.log('3')
         return
     } else {
-        if (display[0].innerHTML == 0 && (val == '*' || val == '/')) {
-            display[0].innerHTML = 0
+        if (display[0].innerHTML == 0 && (val == '*' || val == '/' || val == '+' || val == '-' || val == '.')) {
+            display[0].innerHTML = '0'
+            display[0].innerHTML += val
+            console.log('1')
             return
         }
     }
@@ -31,9 +41,27 @@ function clicked(val) {
         dot = dot + 1
         if (dot > 1) {
             console.log(dot)
-            val = ''
+            val = val
         } else {
             display[0].innerHTML += val
+            console.log('2')
+            return
+        }
+    }
+
+    while (val == '+' || val == '-' || val == '*' || val == '/') {
+        op = op + 1
+        if (op > 1) {
+            if (val != tmp) {
+                let res = display[0].innerHTML
+                display[0].innerHTML = res.substring(0, res.length - 1)
+                display[0].innerHTML += val
+                tmp = val
+                return
+            }
+        } else {
+            display[0].innerHTML += val
+            tmp = val
             return
         }
     }
@@ -41,11 +69,15 @@ function clicked(val) {
     if (val == '+' || val == '-' || val == '*' || val == '/') {
         dot = 0
     }
-    
-    display[0].innerHTML += val     
+
+    if (val in number) {
+        op = 0
+    }
+
+    display[0].innerHTML += val
 }
 
-    
+
 function reset() {
     display[0].innerHTML = 0
     dot = 0
@@ -57,8 +89,8 @@ function del() {
         display[0].innerHTML = 0
         return
     }
-    display[0].innerHTML = res.substring(0, res.length -1)
-    dot --
+    display[0].innerHTML = res.substring(0, res.length - 1)
+    dot--
     if (display[0].innerHTML == '') {
         display[0].innerHTML = 0
     }
@@ -70,15 +102,20 @@ function cal() {
     if (res.includes('--')) {
         res = res.replace('--', '+')
     }
-    let rs = eval(res)
-    display[0].innerHTML = rs.round(2)
-    if (display[0].innerHTML == 'NaN') {
+    try {
+        let rs = eval(res)
+        display[0].innerHTML = rs.round(2)
+        if (display[0].innerHTML == 'NaN') {
+            display[0].innerHTML = 'ERROR'
+        }
+    } catch (e) {
+        console.log('fixed')
         display[0].innerHTML = 'ERROR'
     }
 }
 
-Number.prototype.round = function(places) {
-    return +(Math.round(this + "e+" + places)  + "e-" + places);
+Number.prototype.round = function (places) {
+    return +(Math.round(this + "e+" + places) + "e-" + places);
 }
 
 function change1() {
