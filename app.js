@@ -16,23 +16,18 @@ let click = false
 let op = 0
 let tmp = '+'
 
-document.addEventListener("DOMContentLoaded", function () {
-
-});
-
 function clicked(val) {
     let len = display[0].innerHTML.toString()
-    console.log(len)
     if (len == '0' && (val in number)) {
         display[0].innerHTML = ''
         display[0].innerHTML += val
         console.log('3')
         return
     } else {
-        if (display[0].innerHTML == 0 && (val == '*' || val == '/' || val == '+' || val == '-' || val == '.')) {
+        if (len == '0' && (val == '*' || val == '/' || val == '+' || val == '-' || val == '.')) {
             display[0].innerHTML = '0'
             display[0].innerHTML += val
-            console.log('1')
+            op = op + 1
             return
         }
     }
@@ -53,9 +48,13 @@ function clicked(val) {
         op = op + 1
         if (op > 1) {
             if (val != tmp) {
+                console.log(op)
                 let res = display[0].innerHTML
                 display[0].innerHTML = res.substring(0, res.length - 1)
                 display[0].innerHTML += val
+                tmp = val
+                return
+            } else {
                 tmp = val
                 return
             }
