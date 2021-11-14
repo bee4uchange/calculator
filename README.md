@@ -1,1 +1,2 @@
-# calculator
+# Calculator
+Design from FrontendMentor
